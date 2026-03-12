@@ -26,6 +26,8 @@
 const frequency = (arr) => {
   let minFreq = +Infinity;
   let maxFreq = 0;
+  let min = 0;
+  let max = 0;
   let freq = {};
   for (let i = 0; i < arr.length; i++) {
     // for (let i = 0; i < 5, true)
@@ -61,7 +63,12 @@ const frequency = (arr) => {
     // j = 1; 1 < 5, true
     // j = 2; 2 < 5, true
     if (freq[arr[j]] > maxFreq) {
-      maxFreq = arr[j];
+      //if (freq[arr[0]] > maxFreq)
+      // if (freq[1] > 0), true
+      // if (2 > 0), true
+      // if (freq[arr[1]] > maxFreq)
+      maxFreq = freq[arr[j]];
+      // maxFreq = 1;
     }
     // if (freq[arr[0]] > 0) max = arr[j];
     // if (freq[1] > 0) max = arr[j]
@@ -69,7 +76,7 @@ const frequency = (arr) => {
     // if (freq[arr[2]] > max) max = arr[2];
     // if (freq[1] > max)
     // if (2 > )
-    if (freq[arr[j]] < min) min = arr[j];
+    if (freq[arr[j]] < minFreq) minFreq = freq[arr[j]];
     // if (freq[arr[0]] < +Infinity)
     // if (freq[1] < +Infinity)
     // if (2 < +Infinity), true
@@ -79,6 +86,11 @@ const frequency = (arr) => {
     // if (freq[2] < min)
     // if (2 < 1), false
   }
+  for (let k = 0; k < arr.length; k++) {
+    if (freq[arr[k]] == maxFreq) max = arr[k];
+    if (freq[arr[k]] == minFreq) min = arr[k];
+  }
+
   let newArr = [];
   newArr.push(max);
   newArr.push(min);
