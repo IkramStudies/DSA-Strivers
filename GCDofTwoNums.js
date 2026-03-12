@@ -19,9 +19,12 @@ Greatest common factor: 3 (GCD)
 
 const GCD = (n1, n2) => {
   let gcd = 0;
-  for (let i = 1; i < n1; i++) {
+  let greatestNum = 0;
+  if (n1 > n2) greatestNum = n1;
+  else greatestNum = n2;
+  for (let i = 1; i < greatestNum; i++) {
     if (n1 % i == 0 && n2 % i == 0) gcd = i;
   }
   return gcd;
 };
-console.log(GCD(9, 12));
+console.log(GCD(20, 15));
